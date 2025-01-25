@@ -25,6 +25,23 @@ img {
     /* height: 50%; */
 }
 
+.image-name {
+    position: absolute; /* Position absolute to overlay on image */
+    /* top: 50%; */
+    left: 50%;
+    bottom: 1%;
+
+    /* Adjust position to truly center */
+    transform: translate(-50%, -50%); 
+
+    color: white; /* Text color */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px; /* Padding around text */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center text within the div */
+}
+
+
 button {
     position: absolute;
     top: 50%;

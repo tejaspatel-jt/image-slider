@@ -78,6 +78,9 @@ button {
 
 .pagination {
   text-align: center;
+
+  /* This is for aligning play icon with dots */
+  display: flex;
 }
 
 .dot {
@@ -93,6 +96,12 @@ button {
 .active,
 .dot:hover {
   background-color: #717171;
+}
+
+/* Style for paused state with play icon */
+.play {
+  color: #5a5a5a;
+  background: none;
 }
 
 /* R E S P O N S I V E - start */

@@ -1,4 +1,6 @@
 let slideIndex = 1;
+let isPaused = false; // Variable to track pause state
+let slideInterval; // Variable to hold setInterval reference
 
 /**
  * Configure your slider images and caption here
@@ -16,12 +18,15 @@ const images = [
 function initSlider() {
     createSlides(); // Create slides from the images array
     showSlides(slideIndex); // Show the first slide
+    startAutoSlide();
+}
 
-    // Auto start slider
-    setInterval(() => {
-        changeSlide(1);
+function startAutoSlide() {
+    slideInterval = setInterval(() => {
+        if (!isPaused) {
+            changeSlide(1);
+        }
     }, 2000);
-
 }
 
 function createSlides() {
@@ -38,6 +43,14 @@ function createSlides() {
         const captionElement = document.createElement('div');
         captionElement.className = 'caption';
         captionElement.textContent = image.caption;
+
+        // Add click event to pause/resume on image click
+        imgElement.addEventListener('click', function () {
+            isPaused = !isPaused; // Toggle pause state
+            this.style.cursor = isPaused ? 'default' : 'pointer'; // Change cursor based on pause state
+            updatePagination(images.length);
+        });
+
 
         slide.appendChild(imgElement);
         slide.appendChild(captionElement);
@@ -84,6 +97,15 @@ function updatePagination(numSlides) {
         const dot = document.createElement("span");
         dot.className = "dot";
         dot.onclick = () => currentSlide(i + 1); // Set onclick for each dot
+
+        // If paused and this is the active slide, add a play icon
+        if (isPaused && i === (slideIndex - 1)) {
+            dot.innerHTML = '&#9658;'; // Play icon (triangle)
+            dot.classList.add('play'); // Optional class for styling
+        } else {
+            dot.innerHTML = ''; // No icon when not paused
+        }
+
         pagination.appendChild(dot);
     }
 

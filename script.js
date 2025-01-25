@@ -98,3 +98,15 @@ function updatePagination(numSlides) {
 
 // Initialize the slider when the page loads
 window.onload = initSlider;
+
+// A11y
+
+// Add event listener for keyboard navigation
+document.addEventListener('keydown', function (event) {
+    if (event.key === "ArrowLeft") {
+        changeSlide(-1); // Navigate to the previous slide
+    } else if (event.key === "ArrowRight") {
+        changeSlide(1); // Navigate to the next slide
+    }
+});
+

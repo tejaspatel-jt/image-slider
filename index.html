@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -9,15 +9,15 @@
     <script src='script.js'></script>
 </head>
 <body>
-    <main class="slider">
-        <section class="slides">
+    <main class="slider" aria-label="Image Slider">
+        <section class="slides" aria-live="polite">
             <!-- Dynamic slides will be landed here from js -->
         </section>
 
-        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        <button class="prev" onclick="changeSlide(-1)" aria-label="Previous Slide">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)" aria-label="Next Slide">&#10095;</button>
 
-        <nav class="pagination" id="pagination">
+        <nav class="pagination" id="pagination" aria-label="Slider Pagination">
             <!-- Dynamic pagination will be landed here from js -->
         </nav> 
 

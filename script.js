@@ -9,12 +9,19 @@ const images = [
     { src: "assets/img/image3.png", caption: "Jignect Technologies" },
     { src: "assets/img/image4.png", caption: "Image 4" },
     { src: "assets/img/image5.png", caption: "Image 5" },
+    { src: "assets/img/image6.jpg", caption: "Image 6" },
     // Add more images as needed
 ];
 
 function initSlider() {
     createSlides(); // Create slides from the images array
     showSlides(slideIndex); // Show the first slide
+
+    // Auto start slider
+    setInterval(() => {
+        changeSlide(1);
+    }, 2000);
+
 }
 
 function createSlides() {

@@ -1,86 +1,188 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .slider {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .slides {
-    display: flex;
-    transition: transform 0.5s ease;
+  display: flex;
+  transition: transform 0.5s ease;
 }
 
 .slide {
-    min-width: 100%;
+  min-width: 100%;
+
+  /* positioning caption */
+  position: relative;
 }
 
 img {
-    width: 100%;
-    height: auto;
-    
-    height: 90vh;
-    /* width: auto; */
+  width: 100%;
+  height: auto;
+
+  /* Limit height to 90% of viewport height for better visibility */
+  max-height: 90vh;
+
+  /* Cover the area without distortion */
+  object-fit: cover;
 }
 
 .caption {
-    position: absolute; /* Position absolute to overlay on image */
-    /* top: 50%; */
-    left: 50%;
-    bottom: 1%;
+  /* overlay on slider image */
+  position: absolute;
+  left: 50%;
+  bottom: 1%;
 
-    /* Adjust position to truly center */
-    transform: translate(-50%, -50%); 
+  /* Adjust position to truly center */
+  transform: translate(-50%, -50%);
 
-    color: white; /* Text color */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    padding: 10px; /* Padding around text */
-    border-radius: 5px; /* Rounded corners */
-    text-align: center; /* Center text within the div */
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 30px;
+
+  /* width: 80%; */
 }
 
-
 button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 10px;
-    border: 1px solid gray;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 .prev {
-    left: 10px;
+  left: 10px;
 }
 
 .next {
-    right: 10px;
+  right: 10px;
 }
 
 .pagination {
-    text-align: center;
+  text-align: center;
 }
 
 .dot {
-    display: inline-block;
-    height: 15px;
-    width: 15px;
-    margin: 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    cursor: pointer;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  margin: 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.active, .dot:hover {
-    background-color: #717171;
+.active,
+.dot:hover {
+  background-color: #717171;
 }
+
+/* R E S P O N S I V E - start */
+
+@media only screen and (max-width: 600px) {
+  img {
+    height: 50vh;
+    max-height: 50vh;
+    object-fit: fill;
+  }
+
+  .caption {
+    font-size: 15px;
+    padding: 5px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 6px;
+    width: auto;
+    height: auto;
+  }
+}
+
+/* Smallest Tablets in portrait mode */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  img {
+    height: 60vh;
+    object-fit: contain;
+  }
+
+  .caption {
+    font-size: 15px;
+    padding: 5px;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+
+/* Smallest Tablets in landscape mode and small laptops */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  img {
+    height: 80vh;
+    object-fit: contain;
+  }
+
+  .caption {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 10px;
+  }
+}
+
+/* Laptops and desktosp (small screens) */
+@media only screen and (min-width: 1025px) and (max-width: 1366px) {
+  img {
+    height: 80vh;
+  }
+
+  .caption {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 22px;
+    padding: 12px;
+  }
+}
+
+/* Large screens (laptops and desktosp) */
+@media only screen and (min-width: 1367px) {
+  img {
+    height: 90vh;
+  }
+
+  .caption {
+    padding: 14px;
+  }
+
+  button {
+    font-size: 24px;
+    padding: 14px;
+  }
+}
+
+/* R E S P O N S I V E - end */

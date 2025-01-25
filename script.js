@@ -29,7 +29,7 @@ function createSlides() {
         imgElement.alt = image.caption;
 
         const captionElement = document.createElement('div');
-        captionElement.className = 'image-name';
+        captionElement.className = 'caption';
         captionElement.textContent = image.caption;
 
         slide.appendChild(imgElement);

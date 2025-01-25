@@ -44,13 +44,21 @@ function createSlides() {
         captionElement.className = 'caption';
         captionElement.textContent = image.caption;
 
+        // Make the caption focusable
+        captionElement.tabIndex = 0;
+
         // Add click event to pause/resume on image click
         imgElement.addEventListener('click', function () {
             isPaused = !isPaused; // Toggle pause state
             this.style.cursor = isPaused ? 'default' : 'pointer'; // Change cursor based on pause state
             updatePagination(images.length);
-        });
 
+            if (isPaused) {
+                this.setAttribute('aria-label', 'Slider paused. Click to resume.');
+            } else {
+                this.setAttribute('aria-label', 'Slider playing.');
+            }
+        });
 
         slide.appendChild(imgElement);
         slide.appendChild(captionElement);
@@ -82,6 +90,9 @@ function showSlides(n) {
     // Show the current slide
     slides[slideIndex - 1].style.display = "block";
 
+    // set focus to current slide and its caption
+    slides[slideIndex - 1].focus();
+
     // Update pagination dots
     updatePagination(slides.length);
 }
@@ -98,6 +109,9 @@ function updatePagination(numSlides) {
         dot.className = "dot";
         dot.onclick = () => currentSlide(i + 1); // Set onclick for each dot
 
+        // Make dots focusable
+        dot.tabIndex = 0;
+
         // If paused and this is the active slide, add a play icon
         if (isPaused && i === (slideIndex - 1)) {
             dot.innerHTML = '&#9658;'; // Play icon (triangle)
@@ -107,6 +121,14 @@ function updatePagination(numSlides) {
         }
 
         pagination.appendChild(dot);
+
+        // Add keyboard accessibility for dots
+        dot.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') { // Allow Enter or Space to activate the dot
+                currentSlide(i + 1);
+            }
+        });
+
     }
 
     // Set the active class on the current dot

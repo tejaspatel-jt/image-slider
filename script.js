@@ -11,7 +11,7 @@ const images = [
     { src: "assets/img/image_3.jpg", caption: "Simon 73" },
     { src: "assets/img/image_4.jpg", caption: "Daejeung" },
     { src: "assets/img/image_5.jpg", caption: "Felix Mitter Meier" },
-    { src: "assets/img/image_6.jpg", caption: "philippedonn" },
+    { src: "assets/img/image_6.jpg", caption: "" },
     { src: "assets/img/image_7.jpg", caption: "Francesco Ungaro" },
 
     // Add more images as needed
@@ -41,22 +41,26 @@ function createSlides() {
         const imgElement = document.createElement('img');
         imgElement.src = image.src;
         imgElement.alt = image.caption;
+        slide.appendChild(imgElement);
 
-        const captionElement = document.createElement('div');
-        captionElement.className = 'caption';
-        captionElement.textContent = image.caption;
 
-        // Make the caption focusable
-        captionElement.tabIndex = 0;
+        // Handle images without caption
+        if(image.caption){
 
+            const captionElement = document.createElement('div');
+            captionElement.className = 'caption';
+            captionElement.textContent = image.caption;
+
+            // Make the caption focusable
+            captionElement.tabIndex = 0;
+
+            slide.appendChild(captionElement);
+        }
+        
         // Add click event to pause/resume on image click
         imgElement.addEventListener('click', function () {
-
             togglePlayPause();
         });
-
-        slide.appendChild(imgElement);
-        slide.appendChild(captionElement);
 
         slidesContainer.appendChild(slide);
     });

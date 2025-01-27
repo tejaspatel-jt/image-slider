@@ -6,12 +6,14 @@ let slideInterval; // Variable to hold setInterval reference
  * Configure your slider images and caption here
  */
 const images = [
-    { src: "assets/img/image1.png", caption: "Image 1" },
-    { src: "assets/img/image2.png", caption: "Image 2" },
-    { src: "assets/img/image3.png", caption: "Jignect Technologies" },
-    { src: "assets/img/image4.png", caption: "Image 4" },
-    { src: "assets/img/image5.png", caption: "Image 5" },
-    { src: "assets/img/image6.jpg", caption: "Image 6" },
+    { src: "assets/img/image_1.jpg", caption: "That Guy Craig" },
+    { src: "assets/img/image_2.jpg", caption: "AXP Photography" },
+    { src: "assets/img/image_3.jpg", caption: "Simon 73" },
+    { src: "assets/img/image_4.jpg", caption: "Daejeung" },
+    { src: "assets/img/image_5.jpg", caption: "Felix Mitter Meier" },
+    { src: "assets/img/image_6.jpg", caption: "philippedonn" },
+    { src: "assets/img/image_7.jpg", caption: "Francesco Ungaro" },
+
     // Add more images as needed
 ];
 

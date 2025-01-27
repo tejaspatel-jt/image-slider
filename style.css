@@ -1,6 +1,10 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slider {
@@ -15,6 +19,9 @@ body {
 
 .slides {
   display: flex;
+
+  /* Fix for images with smaller width */
+  width: 100vw;
   transition: transform 0.5s ease;
 }
 
@@ -96,9 +103,15 @@ button {
   border-radius: 50%;
   cursor: pointer;
 
-  &.dot:hover{
-    background-color: #717171;
+  &.play.active {
+    margin-top: 0px;
   }
+}
+
+/* active class is applied from script directly */
+.active,
+.dot:not(.active):hover {
+  background-color: #717171;
 }
 
 /* Style for paused state with play icon */
@@ -127,6 +140,12 @@ button {
     width: auto;
     height: auto;
   }
+
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 4px;
+  }
 }
 
 /* Smallest Tablets in portrait mode */
@@ -144,6 +163,12 @@ button {
   button {
     font-size: 18px;
     padding: 8px;
+  }
+
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 4px;
   }
 }
 
@@ -163,6 +188,12 @@ button {
     font-size: 20px;
     padding: 10px;
   }
+
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 4px;
+  }
 }
 
 /* Laptops and desktosp (small screens) */
@@ -178,6 +209,12 @@ button {
   button {
     font-size: 22px;
     padding: 12px;
+  }
+  
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 4px;
   }
 }
 

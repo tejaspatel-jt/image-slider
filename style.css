@@ -103,9 +103,6 @@ button {
   border-radius: 50%;
   cursor: pointer;
 
-  &.play.active {
-    margin-top: 0px;
-  }
 }
 
 /* active class is applied from script directly */
@@ -145,6 +142,10 @@ button {
     height: 10px;
     width: 10px;
     margin: 4px;
+
+    &.play.active {
+      margin-top: 0px;
+    }
   }
 }
 
@@ -169,6 +170,11 @@ button {
     height: 10px;
     width: 10px;
     margin: 4px;
+
+    &.play.active {
+      margin-top: 1px;
+      padding-right: 2px;
+    }
   }
 }
 
@@ -193,6 +199,11 @@ button {
     height: 12px;
     width: 12px;
     margin: 4px;
+
+    &.play.active {
+      margin-top: 2px;
+      padding-right: 2px;
+    }
   }
 }
 
@@ -215,6 +226,10 @@ button {
     height: 12px;
     width: 12px;
     margin: 4px;
+
+    &.play.active {
+      margin-top: 2px;
+    }
   }
 }
 

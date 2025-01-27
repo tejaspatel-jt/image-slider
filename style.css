@@ -34,6 +34,10 @@ img {
 
   /* Cover the area without distortion */
   object-fit: cover;
+
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .caption {
@@ -91,11 +95,10 @@ button {
   background-color: #bbb;
   border-radius: 50%;
   cursor: pointer;
-}
 
-.active,
-.dot:hover {
-  background-color: #717171;
+  &.dot:hover{
+    background-color: #717171;
+  }
 }
 
 /* Style for paused state with play icon */

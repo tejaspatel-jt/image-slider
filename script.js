@@ -51,15 +51,8 @@ function createSlides() {
 
         // Add click event to pause/resume on image click
         imgElement.addEventListener('click', function () {
-            isPaused = !isPaused; // Toggle pause state
-            this.style.cursor = isPaused ? 'default' : 'pointer'; // Change cursor based on pause state
-            updatePagination(images.length);
 
-            if (isPaused) {
-                this.setAttribute('aria-label', 'Slider paused. Click to resume.');
-            } else {
-                this.setAttribute('aria-label', 'Slider playing.');
-            }
+            togglePlayPause();
         });
 
         slide.appendChild(imgElement);
@@ -67,6 +60,29 @@ function createSlides() {
 
         slidesContainer.appendChild(slide);
     });
+}
+ 
+/**
+ * This will handle play and pause of slider along with updating pagination dot states based on it.
+ */
+function togglePlayPause(){
+
+            isPaused = !isPaused; // Toggle pause state
+            
+            // this.style.cursor = isPaused ? 'default' : 'pointer';
+            
+            updatePagination(images.length);
+
+            // Get the currnet image 
+            const currentImage = document.querySelector(`.slide:nth-child(${slideIndex}) img`);
+
+            // Update aria-label for accessibility
+            if (isPaused) {
+                currentImage.setAttribute('aria-label', 'Slider paused. Click to resume.');
+            } else {
+                currentImage.setAttribute('aria-label', 'Slider playing.');
+            }
+
 }
 
 function changeSlide(n) {
@@ -150,9 +166,12 @@ window.onload = initSlider;
 // Add event listener for keyboard navigation
 document.addEventListener('keydown', function (event) {
     if (event.key === "ArrowLeft") {
-        changeSlide(-1); // Navigate to the previous slide
+        changeSlide(-1);
     } else if (event.key === "ArrowRight") {
-        changeSlide(1); // Navigate to the next slide
+        changeSlide(1);
+    } else if (event.key === " ") {  // SPACE BAR
+        event.preventDefault(); // Prevent scrolling when space is pressed
+        togglePlayPause();
     }
 });
 
